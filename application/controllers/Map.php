@@ -11,9 +11,9 @@ class Map extends CI_Controller
     {
         $this->load->view('menu/v_map');
     }
-    // public function absen_json()
-    // {
-    //     $data = $this->db->get('tb_geoatt_brt')->result();
-    //     echo json_encode($data);
-    // }
+    public function puskesmas_json()
+    {
+        $data = $this->db->get('puskesmas')->result();
+        echo json_encode($data);
+    }
 }

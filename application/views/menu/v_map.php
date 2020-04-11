@@ -14,7 +14,7 @@
 
     <style type="text/css">
         #mapid {
-            height: 435px;
+            height: 450px;
         }
     </style>
 
@@ -27,10 +27,10 @@
         <div id="layoutSidenav_content">
             <main style="padding-bottom:80px">
                 <div class="container-fluid">
-                    <h1 class="mt-2">Peta Kabupaten Pemalang</h1>
+                    <h1 class="mt-2">Lokasi Puskesmas</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="<?= base_url('home'); ?>">Beranda</a></li>
-                        <li class="breadcrumb-item active">Map</li>
+                        <li class="breadcrumb-item active">Lokasi</li>
                     </ol>
                     <div id="mapid"></div>
                 </div>
@@ -44,41 +44,29 @@
 
 
     <script type="text/javascript">
-        var map = L.map('mapid').setView([-6.890280, 109.381240], 12);
+        var map = L.map('mapid').setView([-6.893020, 109.451440], 12);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        $.getJSON(base_url + "assets/geojson/map.geojson", function(data) {
-            geoLayer = L.geoJSON(data, {
-                style: function(feature) {
+        $.getJSON("<?= base_url() ?>map/puskesmas_json", function(data) {
+            $.each(data, function(i, field) {
 
-                    return {
-                        fillOpacity: 0.5,
-                        weight: 1,
-                        opacity: 1,
-                        color: "#5F6693"
-                    };
-                },
-                onEachFeature: function(feature, layer) {
-                    var cartoid = parseFloat(feature.properties.cartodb_id);
-                }
-            }).addTo(map);
+                var v_lat = parseFloat(data[i].latitude);
+                var v_long = parseFloat(data[i].longitude);
+
+                var markerIcon = L.icon({
+                    iconUrl: '<?php echo base_url('assets/img/marker_puskesmas.png') ?>',
+                    iconSize: [30, 60]
+                });
+                L.marker([v_lat, v_long], {
+                        icon: markerIcon
+                    }).addTo(map)
+                    .bindPopup(data[i].nama_puskesmas)
+            });
         });
-
-        // $.getJSON("<?= base_url() ?>pemetaan/absen_json", function(data) {
-        //     $.each(data, function(i, field) {
-
-        //         var v_lat = parseFloat(data[i].lat);
-        //         var v_long = parseFloat(data[i].lang);
-
-        //         L.marker([v_lat, v_long]).addTo(map)
-        //             .bindPopup(data[i].user_id)
-        //     });
-        // });
     </script>
 </body>
-
 
 </html>
