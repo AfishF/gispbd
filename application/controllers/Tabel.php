@@ -20,7 +20,7 @@ class Tabel extends CI_Controller
     }
     public function add()
     {
-        $puskesmas = $this->m_barbuk;
+        $puskesmas = $this->m_tabel;
         $validation = $this->form_validation;
         $validation->set_rules($puskesmas->rules());
 
@@ -29,14 +29,14 @@ class Tabel extends CI_Controller
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
 
-        $this->template_admin->load('/admin/template_admin', '/admin/addBarbuk');
+        $this->load->view('menu/v_add');
     }
 
-    public function edit($id = null)
+    public function edit($kode_puskesmas = null)
     {
-        if (!isset($id)) redirect('admin/admin_barbuk');
+        if (!isset($kode_puskesmas)) redirect('tabel');
        
-        $puskesmas = $this->m_barbuk;
+        $puskesmas = $this->m_tabel;
         $validation = $this->form_validation;
         $validation->set_rules($puskesmas->rules());
 
@@ -45,18 +45,18 @@ class Tabel extends CI_Controller
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
 
-        $data["puskesmas"] = $puskesmas->getById($id);
+        $data["puskesmas"] = $puskesmas->getById($kode_puskesmas);
         if (!$data["puskesmas"]) show_404();
         
-        $this->template_admin->load('/admin/template_admin', '/admin/editBarbuk', $data);
+        $this->load->view('menu/v_edit', $data);
     }
 
-    public function delete($id=null)
+    public function delete($kode_puskesmas=null)
     {
-        if (!isset($id)) show_404();
+        if (!isset($kode_puskesmas)) show_404();
         
-        if ($this->m_barbuk->delete($id)) {
-            redirect(site_url('admin/admin_barbuk'));
+        if ($this->m_tabel->delete($kode_puskesmas)) {
+            redirect(site_url('tabel'));
         }
     }
 }

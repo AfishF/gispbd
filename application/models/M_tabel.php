@@ -7,11 +7,11 @@ class M_tabel extends CI_Model
         $this->load->database();
     }
 
-    // function show_tabel()
-    // {
-    //     $total = $this->db->query("SELECT * FROM pusat_kesehatan_masyarakat");
-    //     return $total;
-    // }
+    function show_tabel()
+    {
+        $total = $this->db->query("SELECT * FROM pusat_kesehatan_masyarakat");
+        return $total;
+    }
 
     private $_table = "puskesmas";
     private $_view = "pusat_kesehatan_masyarakat";
@@ -24,19 +24,19 @@ class M_tabel extends CI_Model
     public $luas;
     public $desa;
     public $penduduk;
-    public $wilayah;
-    public $jenis;
+    public $karakteristik_wilayah;
+    public $jenis_puskesmas;
 
 
     public function rules()
     {
         return [
             ['field' => 'kode_puskesmas',
-            'label' => 'kode_puskesmas',
-            'rules' => 'numeric'],
+            'label' => 'kode puskesmas',
+            'rules' => 'required'],
 
             ['field' => 'nama_puskesmas',
-            'label' => 'nama_puskesmas',
+            'label' => 'nama puskesmas',
             'rules' => 'required'],
             
             ['field' => 'latitude',
@@ -63,24 +63,24 @@ class M_tabel extends CI_Model
             'label' => 'penduduk',
             'rules' => 'numeric'],
 
-            ['field' => 'karakteristik',
-            'label' => 'karakteristik',
-            'rules' => 'required'],
+            ['field' => 'karakteristik_wilayah',
+            'label' => 'karakteristik_wilayah',
+            'rules' => 'numeric'],
             
-            ['field' => 'jenis',
-            'label' => 'jenis',
-            'rules' => 'required']
+            ['field' => 'jenis_puskesmas',
+            'label' => 'jenis_puskesmas',
+            'rules' => 'numeric']
         ];
     }
 
     public function getAll()
     {
-        return $this->db->get($this->_table)->result();
+        return $this->db->get($this->_view)->result();
     }
     
     public function getById($kode_puskesmas)
     {
-        return $this->db->get_where($this->_view, ["kode_puskesmas" => $kode_puskesmas])->row();
+        return $this->db->get_where($this->_table, ["kode_puskesmas" => $kode_puskesmas])->row();
     }
 
     public function save()
@@ -92,10 +92,10 @@ class M_tabel extends CI_Model
         $this->longitude = $post["longitude"];
         $this->alamat = $post["alamat"];
         $this->luas = $post["luas"];
-        $this->luas = $post["desa"];
-        $this->luas = $post["penduduk"];
-        $this->luas = $post["karakteristik"];
-        $this->luas = $post["jenis"];
+        $this->desa = $post["desa"];
+        $this->penduduk = $post["penduduk"];
+        $this->karakteristik_wilayah = $post["karakteristik_wilayah"];
+        $this->jenis_puskesmas = $post["jenis_puskesmas"];
         return $this->db->insert($this->_table, $this);
     }
 
@@ -108,10 +108,10 @@ class M_tabel extends CI_Model
         $this->longitude = $post["longitude"];
         $this->alamat = $post["alamat"];
         $this->luas = $post["luas"];
-        $this->luas = $post["desa"];
-        $this->luas = $post["penduduk"];
-        $this->luas = $post["karakteristik"];
-        $this->luas = $post["jenis"];
+        $this->desa = $post["desa"];
+        $this->penduduk = $post["penduduk"];
+        $this->karakteristik_wilayah = $post["karakteristik_wilayah"];
+        $this->jenis_puskesmas = $post["jenis_puskesmas"];
         return $this->db->update($this->_table, $this, array('kode_puskesmas' => $post['kode_puskesmas']));
     }
 
