@@ -32,26 +32,18 @@
                                 <tbody>
                                     <?php
                                     $no = 1;
-                                    foreach ($data->result_array() as $d) :
-                                        $nama = $d['Nama Puskesmas'];
-                                        $alamat = $d['Alamat'];
-                                        $luaswilayah = $d['Luas Wilayah'];
-                                        $jumlahdesa = $d['Jumlah Desa'];
-                                        $jumlahpenduduk = $d['Jumlah Penduduk'];
-                                        $karakteristik = $d['Karakteristik Wilayah'];
-                                        $jenis = $d['Jenis Puskesmas'];
-                                    ?>
+                                    foreach ($puskesmas as $key =>$puskesmas) {?>
                                         <tr>
                                             <td data-field="user"><?php echo $no++ ?></td>
-                                            <td data-field="nama"><?php echo $nama ?></td>
-                                            <td data-field="alamat"><?php echo $alamat ?></td>
-                                            <td data-field="luas-wilayah"><?php echo $luaswilayah ?></td>
-                                            <td data-field="jumlah-desa"><?php echo $jumlahdesa ?></td>
-                                            <td data-field="jumlah-penduduk"><?php echo $jumlahpenduduk ?></td>
-                                            <td data-field="karakteristik-wilayah"><?php echo $karakteristik ?></td>
-                                            <td data-field="jenis-puskesmas"><?php echo $jenis ?></td>
+                                            <td data-field="nama"><?php echo $puskesmas->nama_puskesmas ?></td>
+                                            <td data-field="alamat"><?php echo $puskesmas->alamat ?></td>
+                                            <td data-field="luas-wilayah"><?php echo $puskesmas->luas ?></td>
+                                            <td data-field="jumlah-desa"><?php echo $puskesmas->desa ?></td>
+                                            <td data-field="jumlah-penduduk"><?php echo $puskesmas->penduduk ?></td>
+                                            <td data-field="karakteristik-wilayah"><?php echo $puskesmas->karakteristik ?></td>
+                                            <td data-field="jenis-puskesmas"><?php echo $puskesmas->jenis ?></td>
                                         </tr>
-                                    <?php endforeach; ?>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
