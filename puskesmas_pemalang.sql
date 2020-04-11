@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2020 at 06:39 AM
+-- Generation Time: Apr 11, 2020 at 08:04 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -67,7 +67,8 @@ INSERT INTO `karakteristik_wilayah` (`id_wilayah`, `karakteristik_wilayah`) VALU
 -- (See below for the actual view)
 --
 CREATE TABLE `pusat_kesehatan_masyarakat` (
-`Nama Puskesmas` varchar(12)
+`Kode Puskesmas` int(7)
+,`Nama Puskesmas` varchar(12)
 ,`Alamat` varchar(62)
 ,`Luas Wilayah` decimal(5,2)
 ,`Jumlah Desa` int(2)
@@ -129,11 +130,32 @@ INSERT INTO `puskesmas` (`kode_puskesmas`, `nama_puskesmas`, `latitude`, `longit
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id_user` int(8) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `access_level` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `email`, `name`, `password`, `access_level`) VALUES
+(1, 'admin@email.com', 'Administrator', '21232f297a57a5a743894a0e4a801fc3', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `pusat_kesehatan_masyarakat`
 --
 DROP TABLE IF EXISTS `pusat_kesehatan_masyarakat`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pusat_kesehatan_masyarakat`  AS  select `puskesmas`.`nama_puskesmas` AS `Nama Puskesmas`,`puskesmas`.`alamat` AS `Alamat`,`puskesmas`.`luas` AS `Luas Wilayah`,`puskesmas`.`desa` AS `Jumlah Desa`,`puskesmas`.`penduduk` AS `Jumlah Penduduk`,`karakteristik_wilayah`.`karakteristik_wilayah` AS `Karakteristik Wilayah`,`jenis`.`jenis_puskesmas` AS `Jenis Puskesmas` from ((`puskesmas` join `karakteristik_wilayah` on((`puskesmas`.`karakteristik_wilayah` = `karakteristik_wilayah`.`id_wilayah`))) join `jenis` on((`puskesmas`.`jenis_puskesmas` = `jenis`.`id_jenis`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pusat_kesehatan_masyarakat`  AS  select `puskesmas`.`kode_puskesmas` AS `Kode Puskesmas`,`puskesmas`.`nama_puskesmas` AS `Nama Puskesmas`,`puskesmas`.`alamat` AS `Alamat`,`puskesmas`.`luas` AS `Luas Wilayah`,`puskesmas`.`desa` AS `Jumlah Desa`,`puskesmas`.`penduduk` AS `Jumlah Penduduk`,`karakteristik_wilayah`.`karakteristik_wilayah` AS `Karakteristik Wilayah`,`jenis`.`jenis_puskesmas` AS `Jenis Puskesmas` from ((`puskesmas` join `karakteristik_wilayah` on((`puskesmas`.`karakteristik_wilayah` = `karakteristik_wilayah`.`id_wilayah`))) join `jenis` on((`puskesmas`.`jenis_puskesmas` = `jenis`.`id_jenis`))) ;
 
 --
 -- Indexes for dumped tables
@@ -158,6 +180,22 @@ ALTER TABLE `puskesmas`
   ADD PRIMARY KEY (`kode_puskesmas`),
   ADD KEY `fk_wilayah` (`karakteristik_wilayah`),
   ADD KEY `fk_jenis` (`jenis_puskesmas`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id_user`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_user` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
