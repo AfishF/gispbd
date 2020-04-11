@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2020 at 08:04 PM
+-- Generation Time: Apr 11, 2020 at 08:58 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -67,14 +67,14 @@ INSERT INTO `karakteristik_wilayah` (`id_wilayah`, `karakteristik_wilayah`) VALU
 -- (See below for the actual view)
 --
 CREATE TABLE `pusat_kesehatan_masyarakat` (
-`Kode Puskesmas` int(7)
-,`Nama Puskesmas` varchar(12)
-,`Alamat` varchar(62)
-,`Luas Wilayah` decimal(5,2)
-,`Jumlah Desa` int(2)
-,`Jumlah Penduduk` varchar(7)
-,`Karakteristik Wilayah` varchar(9)
-,`Jenis Puskesmas` varchar(14)
+`kode_puskesmas` int(7)
+,`nama_puskesmas` varchar(12)
+,`alamat` varchar(62)
+,`luas` decimal(5,2)
+,`desa` int(2)
+,`penduduk` varchar(7)
+,`karakteristik_wilayah` varchar(9)
+,`jenis_puskesmas` varchar(14)
 );
 
 -- --------------------------------------------------------
@@ -155,7 +155,7 @@ INSERT INTO `user` (`id_user`, `email`, `name`, `password`, `access_level`) VALU
 --
 DROP TABLE IF EXISTS `pusat_kesehatan_masyarakat`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pusat_kesehatan_masyarakat`  AS  select `puskesmas`.`kode_puskesmas` AS `Kode Puskesmas`,`puskesmas`.`nama_puskesmas` AS `Nama Puskesmas`,`puskesmas`.`alamat` AS `Alamat`,`puskesmas`.`luas` AS `Luas Wilayah`,`puskesmas`.`desa` AS `Jumlah Desa`,`puskesmas`.`penduduk` AS `Jumlah Penduduk`,`karakteristik_wilayah`.`karakteristik_wilayah` AS `Karakteristik Wilayah`,`jenis`.`jenis_puskesmas` AS `Jenis Puskesmas` from ((`puskesmas` join `karakteristik_wilayah` on((`puskesmas`.`karakteristik_wilayah` = `karakteristik_wilayah`.`id_wilayah`))) join `jenis` on((`puskesmas`.`jenis_puskesmas` = `jenis`.`id_jenis`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pusat_kesehatan_masyarakat`  AS  select `puskesmas`.`kode_puskesmas` AS `kode_puskesmas`,`puskesmas`.`nama_puskesmas` AS `nama_puskesmas`,`puskesmas`.`alamat` AS `alamat`,`puskesmas`.`luas` AS `luas`,`puskesmas`.`desa` AS `desa`,`puskesmas`.`penduduk` AS `penduduk`,`karakteristik_wilayah`.`karakteristik_wilayah` AS `karakteristik_wilayah`,`jenis`.`jenis_puskesmas` AS `jenis_puskesmas` from ((`puskesmas` join `karakteristik_wilayah` on((`puskesmas`.`karakteristik_wilayah` = `karakteristik_wilayah`.`id_wilayah`))) join `jenis` on((`puskesmas`.`jenis_puskesmas` = `jenis`.`id_jenis`))) ;
 
 --
 -- Indexes for dumped tables
