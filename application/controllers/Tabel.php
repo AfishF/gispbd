@@ -1,6 +1,11 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+require('./application/third_party/phpoffice/vendor/autoload.php');
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Tabel extends CI_Controller
 {
     public function __construct()
@@ -59,4 +64,48 @@ class Tabel extends CI_Controller
             redirect(site_url('tabel'));
         }
     }
+
+    public function export()
+     {
+          $puskesmas = $this->m_tabel->getAll();
+
+          $spreadsheet = new Spreadsheet;
+
+          $spreadsheet->setActiveSheetIndex(0)
+                      ->setCellValue('A1', 'No')
+                      ->setCellValue('B1', 'Puskesmas')
+                      ->setCellValue('C1', 'Alamat')
+                      ->setCellValue('D1', 'Luas Wilayah')
+                      ->setCellValue('E1', 'Jumlah Desa')
+                      ->setCellValue('F1', 'Jumlah Penduduk')
+                      ->setCellValue('G1', 'Karakteristik Wilayah')
+                      ->setCellValue('H1', 'Jenis Puskesmas');
+
+          $kolom = 2;
+          $nomor = 1;
+          foreach($puskesmas as $key => $puskesmas) {
+
+               $spreadsheet->setActiveSheetIndex(0)
+                           ->setCellValue('A' . $kolom, $nomor)
+                           ->setCellValue('B' . $kolom, $puskesmas->nama_puskesmas)
+                           ->setCellValue('C' . $kolom, $puskesmas->alamat)
+                           ->setCellValue('D' . $kolom, $puskesmas->luas)
+                           ->setCellValue('E' . $kolom, $puskesmas->desa)
+                           ->setCellValue('F' . $kolom, $puskesmas->penduduk)
+                           ->setCellValue('G' . $kolom, $puskesmas->karakteristik_wilayah)
+                           ->setCellValue('H' . $kolom, $puskesmas->jenis_puskesmas);
+
+               $kolom++;
+               $nomor++;
+
+          }
+
+          $writer = new Xlsx($spreadsheet);
+
+          header('Content-Type: application/vnd.ms-excel');
+	        header('Content-Disposition: attachment;filename="Data_Puskesmas.xlsx"');
+	        header('Cache-Control: max-age=0');
+
+	  $writer->save('php://output');
+     }
 }
