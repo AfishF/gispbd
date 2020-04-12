@@ -23,6 +23,7 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Data Puskesmas
                         </a>
+                        <a style="margin: 12px" class="btn btn-danger" href="<?php echo site_url('login/logout') ?>"  title="Logout"> Logout</a>
                     </div>
                 </div>
             </nav>

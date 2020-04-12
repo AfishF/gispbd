@@ -22,9 +22,18 @@ class Tabel extends CI_Controller
 
     public function index()
     {
-        $data["puskesmas"] = $this->m_tabel->getAll();
-        $this->load->view('menu/v_tabel', $data);
+        if($this->session->userdata('logged_in')){ 
+            $data["puskesmas"] = $this->m_tabel->getAll();
+            $this->load->view('menu/v_tabel', $data);
+            
+		} else{
+			echo "<script>
+			alert('Access Denied ! ');
+			window.location='".site_url('login')."';
+			</script>";
+		}
     }
+
     public function add()
     {
         $puskesmas = $this->m_tabel;

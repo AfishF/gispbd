@@ -9,7 +9,16 @@ class Map extends CI_Controller
     }
     public function index()
     {
-        $this->load->view('menu/v_map');
+        if($this->session->userdata('logged_in')){ 
+            $this->load->view('menu/v_map');
+            
+		} else{
+			echo "<script>
+			alert('Access Denied ! ');
+			window.location='".site_url('login')."';
+			</script>";
+		}
+        
     }
     public function puskesmas_json()
     {

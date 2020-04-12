@@ -17,7 +17,7 @@
 
 <body>
     <!-- membuat form -->
-    <form id="form" method="POST" action="<?php echo base_url('login/aksi_login') ?>">
+    <form id="form" method="POST" action="<?php echo base_url('login/post_login') ?>">
         <h1 id="head" style="color: rgb(255,255,255)">Login</h1>
         <img class="rounded img-fluid" id="image" style="width:auto;height:auto;margin-left:42px;" src="<?php echo base_url('assets/img/logo_puskesmas.png') ?>">
         <div></div>

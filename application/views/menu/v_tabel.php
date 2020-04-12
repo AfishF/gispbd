@@ -14,8 +14,10 @@
                 </ol>
                 <div class="col-sm-6">
                     <a class="btn btn-info" href="<?php echo site_url('tabel/export') ?>"  title="Download"><span class="fa fa-download"></span> Download Report</a>
+                    <?php if ($this->session->userdata('access_level')=== '1'): ?>
                     <a class="btn btn-info" href="<?php echo site_url('tabel/upload') ?>"  title="Upload"><span class="fa fa-upload"></span> Upload Data</a>
                     <a class="btn btn-info" href="<?php echo site_url('tabel/add') ?>"  title="Edit"><span class="fa fa-plus"></span> Tambah Data</a>
+                    <?php endif; ?>
                     <pre></pre>
                 </div>
                 <div class="card mb-4">
@@ -33,7 +35,9 @@
                                         <th>Jumlah Penduduk</th>
                                         <th>Karakteristik Wilayah</th>
                                         <th>Jenis Puskesmas</th>
+                                        <?php if ($this->session->userdata('access_level')=== '1'): ?>
                                         <th>Aksi</th>
+                                        <?php endif; ?>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,10 +53,12 @@
                                             <td data-field="jumlah-penduduk"><?php echo $puskesmas->penduduk ?></td>
                                             <td data-field="karakteristik-wilayah"><?php echo $puskesmas->karakteristik_wilayah ?></td>
                                             <td data-field="jenis-puskesmas"><?php echo $puskesmas->jenis_puskesmas ?></td>
+                                            <?php if ($this->session->userdata('access_level')=== '1'): ?>
                                             <td style="text-align:center;">
                                                 <pre><a class="btn  btn-warning" href="<?php echo site_url('tabel/edit/' .$puskesmas->kode_puskesmas) ?>"  title="Edit"><span class="far fa-edit"></span> Edit</a></pre>
                                                 <a onclick="deleteConfirm('<?php echo site_url('tabel/delete/'.$puskesmas->kode_puskesmas) ?>')" href="#!" class="btn  btn-danger" title="Hapus"><span class="far fa-trash-alt"></span> Hapus</a>
                                             </td>
+                                            <?php endif; ?>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
