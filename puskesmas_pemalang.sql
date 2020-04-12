@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2020 at 08:58 PM
+-- Generation Time: Apr 12, 2020 at 02:48 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -72,7 +72,7 @@ CREATE TABLE `pusat_kesehatan_masyarakat` (
 ,`alamat` varchar(62)
 ,`luas` decimal(5,2)
 ,`desa` int(2)
-,`penduduk` varchar(7)
+,`penduduk` int(8)
 ,`karakteristik_wilayah` varchar(9)
 ,`jenis_puskesmas` varchar(14)
 );
@@ -91,7 +91,7 @@ CREATE TABLE `puskesmas` (
   `alamat` varchar(62) DEFAULT NULL,
   `luas` decimal(5,2) DEFAULT NULL,
   `desa` int(2) DEFAULT NULL,
-  `penduduk` varchar(7) DEFAULT NULL,
+  `penduduk` int(8) DEFAULT NULL,
   `karakteristik_wilayah` int(1) DEFAULT NULL,
   `jenis_puskesmas` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -101,31 +101,31 @@ CREATE TABLE `puskesmas` (
 --
 
 INSERT INTO `puskesmas` (`kode_puskesmas`, `nama_puskesmas`, `latitude`, `longitude`, `alamat`, `luas`, `desa`, `penduduk`, `karakteristik_wilayah`, `jenis_puskesmas`) VALUES
-(1032090, 'BANYUMUDAL', '-7.12262', '109.2446', 'Jl. Raya Moga-Karangsari Km 1,  RT.01 RW.01 Desa Banyumudal', '41.41', 10, '63,476', 2, 2),
-(1032091, 'WARUNGPRING', '-7.07607', '109.2656', 'Jl. Raya Warungpring, No. 1, RT.04 RW.01 Desa Warungpring', '26.31', 6, '38,846', 2, 2),
-(1032092, 'PULOSARI', '-7.16928', '109.2630', 'Jl. Raya Pulosari-Karangsari Km 1,  RT.26 RW.06 Desa Pulosari ', '87.52', 12, '55,855', 2, 2),
-(1032093, 'BELIK', '-7.18706', '109.3304', 'Jl. Raya Belik-Watukumpul,  RT.04 RW.07 Desa Belik', '124.54', 12, '104,453', 2, 1),
-(1032094, 'WATUKUMPUL', '-7.15601', '109.4187', 'Jl. Raya Watukumpul No. 68, RT.01 RW.04 Desa Watukumpul', '129.02', 15, '64,772', 2, 1),
-(1032095, 'KEBANDARAN', '-6.97577', '109.4967', 'Jl. Raya Kebandaran Km 1, Desa Kebandaran', '85.98', 19, '54,503', 2, 1),
-(1032096, 'BANTARBOLANG', '-7.03218', '109.3807', 'Jl. Raya Bantarbolang No. 170, RT.05 RW.03 Desa Bantarbolang', '139.19', 17, '71,855', 2, 2),
-(1032097, 'RANDUDONGKAL', '-7.10160', '109.3287', 'Jl. Budi Utomo No. 541, RT.52 RW.05 Desa Randudongkal', '27.09', 9, '54,397', 1, 1),
-(1032098, 'KALIMAS', '-7.06473', '109.3170', 'Jl. Raya Kalimas No. 1, RT.01 RW.01 Desa Kalimas', '63.23', 9, '43,034', 2, 2),
-(1032099, 'PADURAKSA', '-6.93794', '109.3897', 'Jl. DI Panjaitan No. 218  RT.03 RW.01  Kel. Paduraksa', '63.69', 9, '44,965', 1, 2),
-(1032100, 'MULYOHARJO', '-6.88888', '109.3932', 'Jl. Veteran No. 277, RT.01 RW.03 Kel. Mulyoharjo', '15.90', 5, '75,474', 1, 1),
-(1032101, 'KEBONDALEM', '-6.89307', '109.3744', 'Jl. Cisadane No.13, Kel. Kebondalem', '22.34', 6, '57,163', 1, 2),
-(1032102, 'BANJARDAWA', '-6.91145', '109.4122', 'Jl. Piere Tendean No. 1, RT.01 RW.06 Desa Banjardawa ', '13.09', 5, '46,646', 1, 2),
-(1032103, 'KABUNAN', '-6.88342', '109.4161', 'Jl. Wora Wari No. 3, RT.01 RW.17 Desa Kabunan ', '19.83', 5, '51,229', 1, 2),
-(1032104, 'JEBED', '-6.94136', '109.4117', 'Jl. Jebed Selatan No. 66, Desa Jebed Selatan', '34.49', 11, '63,867', 2, 2),
-(1032105, 'PETARUKAN', '-6.89508', '109.4578', 'Jl. Raya Petarukan KM.11  RT.03 RW.15 Kel. Petarukan', '46.45', 12, '86,245', 1, 1),
-(1032106, 'KLAREYAN', '-6.84934', '109.4720', 'Jl. Raya Karangdempel No. 69 RT.05 RW.02  Desa Klareyan', '34.84', 8, '60,516', 2, 2),
-(1032107, 'LOSARI', '-6.91597', '109.5212', 'Jl. Raya Losari-Ampelgading, RT.01 RW.01 Desa Losari', '53.30', 16, '66,468', 2, 2),
-(1032108, 'PURWOHARJO', '-6.89847', '109.5378', 'Jl. Raya Sidorejo, RT.07 RW.07 Desa Purwoharjo', '15.14', 10, '55,402', 1, 1),
-(1032109, 'SARWODADI', '-6.86857', '109.5290', 'Jl. Pelita No. 1, RT.21 RW.04 Desa Sarwodadi', '11.40', 8, '33,401', 2, 2),
-(1032110, 'ROWOSARI', '6.88433', '109.5654', 'Jl. Raya Rowosari No. 9, RT.04 RW.02 Desa Rowosari', '11.90', 7, '30,921', 2, 2),
-(1032111, 'MOJO', '-6.83900', '109.5199', 'Jl. Raya Mojo, RT.01 RW.04 Desa Mojo', '48.65', 11, '69,085', 2, 2),
-(1033602, 'JATIROYOM', '-7.02140', '109.4848', 'Jl. Raya Kesesirejo, Desa Jatiroyom', '64.16', 9, '26.757', 2, 2),
-(1033603, 'KARANGASEM', '-6.92790', '109.4700', 'Jl. Raya Karangasem, Desa Karangasem', '25.80', 6, '38.015', 2, 2),
-(1033604, 'CIKADU', '-7.16586', '109.4755', 'Jl. Raya Cikadu, Desa Cikadu', '59.46', 7, '34.72', 2, 2);
+(1032090, 'BANYUMUDAL', '-7.12262', '109.2446', 'Jl. Raya Moga-Karangsari Km 1,  RT.01 RW.01 Desa Banyumudal', '41.41', 10, 63476, 2, 2),
+(1032091, 'WARUNGPRING', '-7.07607', '109.2656', 'Jl. Raya Warungpring, No. 1, RT.04 RW.01 Desa Warungpring', '26.31', 6, 38846, 2, 2),
+(1032092, 'PULOSARI', '-7.16928', '109.2630', 'Jl. Raya Pulosari-Karangsari Km 1,  RT.26 RW.06 Desa Pulosari ', '87.52', 12, 55855, 2, 2),
+(1032093, 'BELIK', '-7.18706', '109.3304', 'Jl. Raya Belik-Watukumpul,  RT.04 RW.07 Desa Belik', '124.54', 12, 104453, 2, 1),
+(1032094, 'WATUKUMPUL', '-7.15601', '109.4187', 'Jl. Raya Watukumpul No. 68, RT.01 RW.04 Desa Watukumpul', '129.02', 15, 64772, 2, 1),
+(1032095, 'KEBANDARAN', '-6.97577', '109.4967', 'Jl. Raya Kebandaran Km 1, Desa Kebandaran', '85.98', 19, 54503, 2, 1),
+(1032096, 'BANTARBOLANG', '-7.03218', '109.3807', 'Jl. Raya Bantarbolang No. 170, RT.05 RW.03 Desa Bantarbolang', '139.19', 17, 71855, 2, 2),
+(1032097, 'RANDUDONGKAL', '-7.10160', '109.3287', 'Jl. Budi Utomo No. 541, RT.52 RW.05 Desa Randudongkal', '27.09', 9, 54397, 1, 1),
+(1032098, 'KALIMAS', '-7.06473', '109.3170', 'Jl. Raya Kalimas No. 1, RT.01 RW.01 Desa Kalimas', '63.23', 9, 43034, 2, 2),
+(1032099, 'PADURAKSA', '-6.93794', '109.3897', 'Jl. DI Panjaitan No. 218  RT.03 RW.01  Kel. Paduraksa', '63.69', 9, 44965, 1, 2),
+(1032100, 'MULYOHARJO', '-6.88888', '109.3932', 'Jl. Veteran No. 277, RT.01 RW.03 Kel. Mulyoharjo', '15.90', 5, 75474, 1, 1),
+(1032101, 'KEBONDALEM', '-6.89307', '109.3744', 'Jl. Cisadane No.13, Kel. Kebondalem', '22.34', 6, 57163, 1, 2),
+(1032102, 'BANJARDAWA', '-6.91145', '109.4122', 'Jl. Piere Tendean No. 1, RT.01 RW.06 Desa Banjardawa ', '13.09', 5, 46646, 1, 2),
+(1032103, 'KABUNAN', '-6.88342', '109.4161', 'Jl. Wora Wari No. 3, RT.01 RW.17 Desa Kabunan ', '19.83', 5, 51229, 1, 2),
+(1032104, 'JEBED', '-6.94136', '109.4117', 'Jl. Jebed Selatan No. 66, Desa Jebed Selatan', '34.49', 11, 63867, 2, 2),
+(1032105, 'PETARUKAN', '-6.89508', '109.4578', 'Jl. Raya Petarukan KM.11  RT.03 RW.15 Kel. Petarukan', '46.45', 12, 86245, 1, 1),
+(1032106, 'KLAREYAN', '-6.84934', '109.4720', 'Jl. Raya Karangdempel No. 69 RT.05 RW.02  Desa Klareyan', '34.84', 8, 60516, 2, 2),
+(1032107, 'LOSARI', '-6.91597', '109.5212', 'Jl. Raya Losari-Ampelgading, RT.01 RW.01 Desa Losari', '53.30', 16, 66468, 2, 2),
+(1032108, 'PURWOHARJO', '-6.89847', '109.5378', 'Jl. Raya Sidorejo, RT.07 RW.07 Desa Purwoharjo', '15.14', 10, 55402, 1, 1),
+(1032109, 'SARWODADI', '-6.86857', '109.5290', 'Jl. Pelita No. 1, RT.21 RW.04 Desa Sarwodadi', '11.40', 8, 33401, 2, 2),
+(1032110, 'ROWOSARI', '6.88433', '109.5654', 'Jl. Raya Rowosari No. 9, RT.04 RW.02 Desa Rowosari', '11.90', 7, 30921, 2, 2),
+(1032111, 'MOJO', '-6.83900', '109.5199', 'Jl. Raya Mojo, RT.01 RW.04 Desa Mojo', '48.65', 11, 69085, 2, 2),
+(1033602, 'JATIROYOM', '-7.02140', '109.4848', 'Jl. Raya Kesesirejo, Desa Jatiroyom', '64.16', 9, 26757, 2, 2),
+(1033603, 'KARANGASEM', '-6.92790', '109.4700', 'Jl. Raya Karangasem, Desa Karangasem', '25.80', 6, 38015, 2, 2),
+(1033604, 'CIKADU', '-7.16586', '109.4755', 'Jl. Raya Cikadu, Desa Cikadu', '59.46', 7, 3472, 2, 2);
 
 -- --------------------------------------------------------
 
