@@ -32,7 +32,7 @@
 }
 
 #butonas {
-  background: #70b2d0;
+  background: #0000FF;
   outline: none;
   text-shadow: initial;
 }
@@ -58,9 +58,9 @@
 }
 
 body {
-  background-image: url("../../assets/img/login picture.jfif");
+  background-image: url("../../assets/img/logo_login.jpg");
   background-size: cover;
-  /* background-color: dodgerblue; */
+  /* background-color: darkgray; */
   background-repeat: no-repeat;
   height: auto;
   width: auto;

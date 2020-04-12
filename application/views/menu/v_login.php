@@ -1,39 +1,47 @@
 <!DOCTYPE html>
 <html>
 
-<?php $this->load->view('templates/_partials/header.php') ?>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>GIS PBD | Login</title>
+    <link rel="icon" href="<?= base_url('assets/img/logo_puskesmas.png') ?>">
 
-<body class="bg-dark">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-9 col-lg-12 col-xl-10">
-                <div class="card shadow-lg o-hidden border-0 my-5">
-                    <div class="card-body p-0">
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-flex" style="padding-left: 0px;  padding-right: 0px;">
-                                <div class="bg-dark flex-grow-1 align-items-center bg-login-image" style="background-image: url(&quot;assets/img/pemalang.png&quot;);"></div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="p-5" style="height: 535px;">
-                                    <div class="text-center">
-                                        <h4 class="text-dark mb-4" style="height: 49px;">Welcome Back!</h4>
-                                    </div>
-                                    <form class="user" style="height: 279px;">
-                                        <div class="form-group"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email"></div>
-                                        <div class="form-group"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password"></div>
-                                        <hr><button class="btn btn-primary btn-block text-white btn-user" type="submit">Login</button>
-                                        <hr>
-                                    </form>
-                                    <div class="text-center"></div>
-                                    <div class="text-center"></div><a class="small" href="<?= base_url('register'); ?> ">Create an Account!</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/OcOrato---Login-form-1.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/OcOrato---Login-form.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/styles.css') ?>">
+
+</head>
+
+<body>
+    <!-- membuat form -->
+    <form id="form" method="POST" action="<?php echo base_url('login/aksi_login') ?>">
+        <h1 id="head" style="color: rgb(255,255,255)">Login</h1>
+        <img class="rounded img-fluid" id="image" style="width:auto;height:auto;margin-left:42px;" src="<?php echo base_url('assets/img/logo_puskesmas.png') ?>">
+        <div></div>
+
+        <div class="form-group">
+            <input class="form-control" type="text" name="username" id="formum" placeholder="Username">
+            <small><span class="text-danger"><?= form_error('username') ?></span></small>
         </div>
-    </div>
-    <?php $this->load->view('templates/_partials/footer'); ?>
+        <div class="form-group">
+            <input class="form-control" type="password" name="password" id="formum2" placeholder="Password">
+            <small><span class="text-danger"><?= form_error('password') ?></span></small>
+        </div>
+        <button class="btn btn-light" id="butonas" type="submit">Login</button>
+        <center>
+            <a href="<?php echo base_url('login/register') ?>">Belum Punya akun?</a>
+        </center>
+    </form>
+    <!-- akhir form -->
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
