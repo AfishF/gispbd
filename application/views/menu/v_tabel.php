@@ -14,7 +14,7 @@
                 </ol>
                 <div class="col-sm-6">
                     <a class="btn btn-info" href="<?php echo site_url('tabel/export') ?>"  title="Download"><span class="fa fa-download"></span> Download Report</a>
-                    <a class="btn btn-info" href="#"  title="Upload"><span class="fa fa-upload"></span> Upload Data</a>
+                    <a class="btn btn-info" href="<?php echo site_url('tabel/upload') ?>"  title="Upload"><span class="fa fa-upload"></span> Upload Data</a>
                     <a class="btn btn-info" href="<?php echo site_url('tabel/add') ?>"  title="Edit"><span class="fa fa-plus"></span> Tambah Data</a>
                     <pre></pre>
                 </div>
