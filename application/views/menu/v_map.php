@@ -66,6 +66,17 @@
                     .bindPopup(data[i].nama_puskesmas)
             });
         });
+
+        $.getJSON("<?= base_url() ?>assets/geojson/map.geojson", function(data) {
+            geoLayer = L.geoJson(data, {
+                style: function(feature) {
+                    return;
+                },
+                onEachFeature: function(feature, layer) {
+                    var kec = parseFloat(feature.properties.kecamatan);
+                }
+            }).addTo(map);
+        });
     </script>
 </body>
 
