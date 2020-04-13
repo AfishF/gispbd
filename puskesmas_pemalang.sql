@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2020 at 02:48 PM
+-- Generation Time: Apr 13, 2020 at 12:21 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -146,7 +146,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `email`, `name`, `password`, `access_level`) VALUES
-(1, 'admin@email.com', 'Administrator', '21232f297a57a5a743894a0e4a801fc3', 1);
+(1, 'admin@email.com', 'admin1', 'f865b53623b121fd34ee5426c792e5c33af8c227', 1),
+(2, 'user@email.com', 'user1', '95c946bf622ef93b0a211cd0fd028dfdfcf7e39e', 2);
 
 -- --------------------------------------------------------
 
@@ -195,7 +196,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
