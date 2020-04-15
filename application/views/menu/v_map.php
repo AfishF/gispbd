@@ -14,7 +14,7 @@
 
     <style type="text/css">
         #mapid {
-            height: 450px;
+            height: 500px;
         }
     </style>
 
@@ -44,7 +44,7 @@
 
 
     <script type="text/javascript">
-        var map = L.map('mapid').setView([-6.893020, 109.451440], 12);
+        var map = L.map('mapid').setView([-6.893020, 109.451440], 10);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -73,7 +73,18 @@
                     return;
                 },
                 onEachFeature: function(feature, layer) {
-                    var kec = parseFloat(feature.properties.kecamatan);
+                    var kecamatan = feature.properties.kecamatan;
+
+                    var info = "Kecamatan " + kecamatan;
+                    layer.bindPopup(info, {
+                        maxWidth: 260,
+                        closeButton: true,
+                        offset: L.point(0, -20)
+                    });
+
+                    layer.on('click', function() {
+                        layer.openPopup();
+                    });
                 }
             }).addTo(map);
         });
