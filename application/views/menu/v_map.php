@@ -14,7 +14,7 @@
 
     <style type="text/css">
         #mapid {
-            height: 500px;
+            height: 750px;
         }
     </style>
 
